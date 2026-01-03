@@ -124,3 +124,49 @@
     max-width: 90vw;
   }
 }
+.home-posts {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem 1.2rem 3rem;
+}
+
+.home-post {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.dark .home-post {
+  border-bottom-color: rgba(255,255,255,.12);
+}
+
+.home-post-title {
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+
+.home-post-title a {
+  text-decoration: none;
+}
+
+.home-post-meta {
+  font-size: .92rem;
+  opacity: .8;
+}
+
+.home-post-summary {
+  margin: .6rem 0 0;
+  line-height: 1.75;
+  opacity: .9;
+}
+
+.home-pagination {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+.home-pagination a {
+  text-decoration: none;
+  opacity: .85;
+}
+.home-pagination a:hover {
+  opacity: 1;
+}
