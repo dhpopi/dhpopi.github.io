@@ -30,7 +30,7 @@ enableRobotsTXT = true
   # 首页顶部简介块（极简）
   [params.homeInfoParams]
     Title = "dhpopi"
-    Content = "记录技术、随笔与项目。"
+    Content = "一只留学PY的苦中作乐罢了"
 
   # 社交链接（可增删）
   [[params.socialIcons]]
