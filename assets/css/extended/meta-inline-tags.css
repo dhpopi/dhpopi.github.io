@@ -1,0 +1,24 @@
+/* 尝试把 tags 挪到日期那一行（兼容多个 PaperMod 结构） */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* tags 常见容器选择器 */
+.post-meta .post-tags,
+.post-meta .i18n_list,
+.post-meta a[href^="/tags/"] {
+  margin: 0;
+}
+
+/* tags 链接更像“元信息” */
+.post-meta a[href^="/tags/"] {
+  opacity: 0.85;
+  text-decoration: none;
+}
+.post-meta a[href^="/tags/"]:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

@@ -23,7 +23,7 @@ enableRobotsTXT = true
   hideSummary = true             # 列表不显示摘要（更像 diygod）
 
   showtoc = true
-  tocopen = true
+  tocopen = false
   mainSections = ["posts"]
 
 
