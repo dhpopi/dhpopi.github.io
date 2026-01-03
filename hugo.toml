@@ -1,0 +1,63 @@
+baseURL = "https://dhpopi.github.io/"
+languageCode = "zh-cn"
+title = "dhpopi"
+theme = "PaperMod"
+
+paginate = 10
+enableRobotsTXT = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  defaultTheme = "auto"     # auto / light / dark
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  disableScrollToTop = false
+
+  # 首页：顶部简介（不会挡住文章列表）
+  [params.homeInfoParams]
+    Title = "dhpopi"
+    Content = "这里是我的个人博客。记录技术、随笔和项目。"
+
+  # 右上角社交图标（可按需删改）
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/dhpopi"
+
+  # 你也可以加这些（有就填）
+  # [[params.socialIcons]]
+  #   name = "email"
+  #   url = "mailto:your@email.com"
+  # [[params.socialIcons]]
+  #   name = "twitter"
+  #   url = "https://twitter.com/xxx"
+
+# 顶部菜单（像 diygod 那样简洁）
+[[menu.main]]
+  name = "文章"
+  url = "/posts/"
+  weight = 1
+
+[[menu.main]]
+  name = "分类"
+  url = "/categories/"
+  weight = 2
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 3
+
+[[menu.main]]
+  name = "项目"
+  url = "/projects/"
+  weight = 4
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 5
