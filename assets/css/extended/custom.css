@@ -1,0 +1,22 @@
+/* 更克制的整体行宽（更像 diygod 的“阅读版式”） */
+.main {
+  max-width: 760px;
+}
+
+/* 首页标题别太大 */
+.home-info .entry-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* 列表标题更紧凑 */
+.post-entry .entry-header h2 {
+  line-height: 1.25;
+}
+
+/* 减少卡片感：让列表更像“纯列表” */
+.post-entry {
+  border: none;
+  box-shadow: none;
+  padding: 0.6rem 0;
+}
