@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+
+    {{- if .Params.tags -}}
+      <div class="post-meta">
+        <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+        <span class="post-tags-inline">
+          ·
+          {{ range $i, $t := .Params.tags }}
+            {{ if $i }}, {{ end }}
+            <a href="{{ printf "/tags/%s/" ($t | urlize) | relURL }}">#{{ $t }}</a>
+          {{ end }}
+        </span>
+      </div>
+    {{- else -}}
+      <div class="post-meta">
+        <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+      </div>
+    {{- end -}}
+
+    {{/* 右侧小封面：优先用 cover.image，其次用 hero/自定义字段 */}}
+    {{ $img := "" }}
+    {{ with .Params.cover }}
+      {{ with .image }}{{ $img = . }}{{ end }}
+    {{ end }}
+    {{ with .Params.featured }}
+      {{ $img = . }}
+    {{ end }}
+
+    {{ if $img }}
+      <div class="right-cover">
+        <img src="{{ $img | relURL }}" alt="cover" />
+      </div>
+    {{ end }}
+  </header>
+
+  {{ if .Params.toc }}
+    {{ partial "toc.html" . }}
+  {{ else if site.Params.showtoc }}
+    {{ partial "toc.html" . }}
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

@@ -5,17 +5,12 @@
     <div class="hero-left">
       <div class="hero-greet">Hi,</div>
       <h1 class="hero-title">{{ site.Title }}</h1>
-      <p class="hero-desc">
-        记录技术、随笔与项目。<br />
-        也欢迎来 GitHub 找我玩。
-      </p>
+      <p class="hero-desc">一只留学PY的苦中作乐罢了。<br/>没什么成功的满足感，还在到处寻找下一顿的面包。</p>
 
       <div class="hero-icons">
         {{ with site.Params.socialIcons }}
           {{ range . }}
-            <a class="hero-icon" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-              {{ .name }}
-            </a>
+            <a class="hero-icon" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
           {{ end }}
         {{ end }}
       </div>
@@ -34,7 +29,6 @@
 <div id="posts"></div>
 
 <section class="home-posts">
-  {{/* 只取 posts 下面的文章 */}}
   {{ $pages := where site.RegularPages "Section" "posts" }}
   {{ $paginator := .Paginate $pages }}
 
@@ -47,34 +41,27 @@
       <div class="home-post-meta">
         <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
         {{ with .Params.tags }}
-          <span class="home-post-tags">
-            ·
-            {{ range $i, $t := . }}
-              {{ if $i }}, {{ end }}
-              <a href="{{ printf "/tags/%s/" ($t | urlize) | relURL }}">#{{ $t }}</a>
-            {{ end }}
-          </span>
+          <span> · </span>
+          {{ range $i, $t := . }}
+            {{ if $i }}, {{ end }}
+            <a href="{{ printf "/tags/%s/" ($t | urlize) | relURL }}">#{{ $t }}</a>
+          {{ end }}
         {{ end }}
       </div>
 
-    {{ with .Params.abstract }}
-         <p class="home-post-summary">{{ . }}</p>
-    {{ else }}
+      {{ with .Params.abstract }}
+        <p class="home-post-summary">{{ . }}</p>
+      {{ else }}
         {{ with .Summary }}
-            <p class="home-post-summary">{{ . | plainify | truncate 140 }}</p>
-    {{ end }}
-{{ end }}
-
+          <p class="home-post-summary">{{ . | plainify | truncate 120 }}</p>
+        {{ end }}
+      {{ end }}
     </article>
   {{ end }}
 
   <nav class="home-pagination">
-    {{ if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL }}">← 上一页</a>
-    {{ end }}
-    {{ if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL }}">下一页 →</a>
-    {{ end }}
+    {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">← 上一页</a>{{ end }}
+    {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">下一页 →</a>{{ end }}
   </nav>
 </section>
 

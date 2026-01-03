@@ -1,22 +1,269 @@
-/* 更克制的整体行宽（更像 diygod 的“阅读版式”） */
+/* =========================
+   Global: typography & width
+   ========================= */
+
+/* 让阅读宽度更舒服：不至于太窄 */
 .main {
-  max-width: 760px;
+  max-width: 860px;
 }
 
-/* 首页标题别太大 */
-.home-info .entry-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
+/* 让正文行距更好读一点 */
+.post-content {
+  line-height: 1.85;
 }
 
-/* 列表标题更紧凑 */
+/* =========================
+   Home: list style (minimal)
+   ========================= */
+
+.post-entry {
+  border: none;
+  box-shadow: none;
+  padding: 0.75rem 0;
+}
+
 .post-entry .entry-header h2 {
   line-height: 1.25;
 }
 
-/* 减少卡片感：让列表更像“纯列表” */
-.post-entry {
-  border: none;
-  box-shadow: none;
-  padding: 0.6rem 0;
+/* 如果你首页是自定义 index.html 的列表，这些类可能用不到，留着也无害 */
+.home-posts {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem 1.2rem 3rem;
+}
+
+.home-post {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.dark .home-post {
+  border-bottom-color: rgba(255,255,255,.12);
+}
+
+.home-post-title {
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+.home-post-title a { text-decoration: none; }
+.home-post-title a:hover { text-decoration: underline; }
+
+.home-post-meta {
+  font-size: .92rem;
+  opacity: .8;
+}
+
+.home-post-summary {
+  margin: .6rem 0 0;
+  line-height: 1.75;
+  opacity: .9;
+}
+
+/* =========================
+   Post: right cover (your single.html)
+   ========================= */
+
+/* 关键：给右侧小封面留空间 */
+.post-single .post-header {
+  position: relative;
+  padding-right: 360px;
+}
+
+/* 右侧小封面盒子 */
+.post-single .right-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.10);
+}
+.dark .post-single .right-cover {
+  border-color: rgba(255,255,255,.14);
+}
+
+.post-single .right-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 移动端：封面回到标题下方 */
+@media (max-width: 860px) {
+  .post-single .post-header { padding-right: 0; }
+  .post-single .right-cover {
+    position: static;
+    width: 100%;
+    height: 260px;
+    margin-top: 1rem;
+  }
+}
+
+/* =========================
+   TOC: compact + no overlap
+   ========================= */
+
+/* 桌面端：TOC 给右侧封面让位，避免重叠 */
+@media (min-width: 861px) {
+  .post-single .toc {
+    margin-right: 360px;
+  }
+}
+
+/* TOC 更克制 */
+.toc details {
+  border-radius: 12px;
+}
+
+.toc summary {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.toc ul { margin-top: 0.5rem; }
+.toc li { margin: 0.25rem 0; line-height: 1.35; }
+
+.toc a {
+  text-decoration: none;
+  opacity: 0.85;
+}
+.toc a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* =========================
+   Meta: inline tags (nice look)
+   ========================= */
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  opacity: 0.85;
+}
+
+.post-meta a {
+  text-decoration: none;
+}
+.post-meta a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Home Hero (bring back)
+   ========================= */
+
+/* 背景网格（可选，想要更克制可以删掉这一段） */
+.hero-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+}
+
+.hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 4rem 1.2rem 1.5rem;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-left {
+  flex: 1.2;
+  min-width: 320px;
+}
+
+.hero-greet {
+  font-size: 1.1rem;
+  opacity: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin: 0 0 1rem;
+}
+
+.hero-icons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.hero-icon {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.hero-icon:hover {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.18);
+  opacity: 0.9;
+}
+.hero-cta:hover { opacity: 1; }
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-photo {
+  width: min(420px, 38vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 手机端：上下排 */
+@media (max-width: 860px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+  }
+  .hero-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .hero-title { font-size: 2.8rem; }
+  .hero-photo {
+    width: 320px;
+    max-width: 92vw;
+  }
 }
