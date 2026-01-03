@@ -24,6 +24,7 @@ enableRobotsTXT = true
 
   showtoc = true
   tocopen = true
+  mainSections = ["posts"]
 
 
   # 首页顶部简介块（极简）
