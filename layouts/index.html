@@ -8,12 +8,17 @@
       <p class="hero-desc">一只留学PY的苦中作乐罢了。<br/>没什么成功的满足感，还在到处寻找下一顿的面包。</p>
 
       <div class="hero-icons">
-        {{ with site.Params.socialIcons }}
-          {{ range . }}
-            <a class="hero-icon" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
-          {{ end }}
+        {{ range site.Params.socialIcons }}
+            <a class="hero-icon"
+            href="{{ .url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ .name }}">
+            {{ partial "svg.html" (dict "name" .name) }}
+            </a>
         {{ end }}
-      </div>
+        </div>
+
 
       <a class="hero-cta" href="#posts">我写的文章 ↓</a>
     </div>

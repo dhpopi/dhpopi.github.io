@@ -37,6 +37,14 @@ enableRobotsTXT = true
     name = "github"
     url = "https://github.com/dhpopi"
 
+  [[params.socialIcons]]
+    name = "bilibili"
+    url = "https://space.bilibili.com/17078573"
+
+  [[params.socialIcons]]
+    name = "steam"
+    url = "https://steamcommunity.com/profiles/76561198963105829/"
+
   # 顶部菜单（极简导航）
   [[menu.main]]
     name = "文章"
