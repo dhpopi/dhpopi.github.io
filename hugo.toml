@@ -59,6 +59,6 @@ enableRobotsTXT = true
   weight = 4
 
 [[menu.main]]
-  name = "关于"
+  name = "关于。"
   url = "/about/"
   weight = 5
