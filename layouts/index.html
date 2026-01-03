@@ -57,9 +57,14 @@
         {{ end }}
       </div>
 
-      {{ with .Summary }}
-        <p class="home-post-summary">{{ . }}</p>
-      {{ end }}
+    {{ with .Params.abstract }}
+         <p class="home-post-summary">{{ . }}</p>
+    {{ else }}
+        {{ with .Summary }}
+            <p class="home-post-summary">{{ . | plainify | truncate 140 }}</p>
+    {{ end }}
+{{ end }}
+
     </article>
   {{ end }}
 

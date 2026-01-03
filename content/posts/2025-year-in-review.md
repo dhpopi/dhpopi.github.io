@@ -5,6 +5,7 @@ tags: ["年终总结", "随笔"]
 categories: ["日志"]
 draft: false
 toc: true
+abstract: "这一年我做了哪些选择、踩了哪些坑、以及我希望 2026 变成什么样。"
 cover:
   image: "/images/covers/2025-review.jpg"
   alt: "2025 年终总结"
