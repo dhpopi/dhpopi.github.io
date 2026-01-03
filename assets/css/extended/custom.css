@@ -352,3 +352,107 @@
 .dark .p-card:hover {
   border-color: rgba(255,255,255,.20);
 }
+
+/* === Full-page grid background (real background) + fade === */
+
+/* 让 body 成为背景挂载点 */
+body {
+  position: relative;
+}
+
+/* 1) 格子层：铺满全屏 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* 两组线：横+竖 */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+
+  /* 格子大小：想更密就调小 */
+  background-size: 48px 48px;
+
+  /* 整体透明度 */
+  opacity: 0.35;
+}
+
+/* 2) 渐隐层：让“中间主要内容区域”更干净（慢慢消失） */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* 关键：用径向渐变做“中心淡掉”的遮罩 */
+  background: radial-gradient(
+    circle at 35% 22%,          /* 渐隐中心位置（偏左上更像你图2） */
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.85) 18%,
+    rgba(0, 0, 0, 0.35) 42%,
+    rgba(0, 0, 0, 0.00) 70%
+  );
+}
+
+/* 3) 确保页面内容在背景上面 */
+.main,
+.header,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* 4) 深色模式/浅色模式分别调一下（PaperMod 常用 data-theme） */
+[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  opacity: 0.22;
+}
+
+[data-theme="light"] body::after {
+  background: radial-gradient(
+    circle at 35% 22%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.85) 18%,
+    rgba(255, 255, 255, 0.35) 42%,
+    rgba(255, 255, 255, 0.00) 70%
+  );
+}
+/* 关掉主页 hero 容器自己画的格子（避免和全屏格子叠加） */
+.hero-grid-bg {
+  background: transparent !important;
+}
+
+/* hero 区域的渐隐遮罩（让标题/简介附近干净） */
+.hero-grid-bg {
+  position: relative;
+}
+
+/* 覆盖在 hero 上的遮罩层 */
+.hero-grid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* 这里用你当前主题背景色“擦掉格子”，实现渐隐 */
+  background: radial-gradient(
+    circle at 35% 25%,
+    rgba(18, 18, 18, 0.92) 0%,
+    rgba(18, 18, 18, 0.85) 18%,
+    rgba(18, 18, 18, 0.35) 45%,
+    rgba(18, 18, 18, 0.00) 70%
+  );
+}
+
+/* 确保 hero 内容在遮罩之上 */
+.hero {
+  position: relative;
+  z-index: 1;
+}

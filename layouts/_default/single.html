@@ -5,7 +5,9 @@
 
     {{- if .Params.tags -}}
       <div class="post-meta">
-        <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ with .Params.date }}
+          <time datetime="{{ $.Date }}">{{ $.Date.Format "2006-01-02" }}</time>
+        {{ end }}
         <span class="post-tags-inline">
           ·
           {{ range $i, $t := .Params.tags }}
@@ -16,7 +18,9 @@
       </div>
     {{- else -}}
       <div class="post-meta">
-        <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ with .Params.date }}
+          <time datetime="{{ $.Date }}">{{ $.Date.Format "2006-01-02" }}</time>
+        {{ end }}
       </div>
     {{- end -}}
 
@@ -36,9 +40,10 @@
     {{ end }}
   </header>
 
-  {{ if .Params.toc }}
+  {{/* TOC 逻辑：页面明确 toc:true 才显示；page(比如 about) 默认不跟随全站 showtoc */}}
+  {{ if eq .Params.toc true }}
     {{ partial "toc.html" . }}
-  {{ else if site.Params.showtoc }}
+  {{ else if and (ne .Params.toc false) site.Params.showtoc (ne .Type "page") }}
     {{ partial "toc.html" . }}
   {{ end }}
 
