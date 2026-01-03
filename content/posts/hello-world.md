@@ -11,7 +11,6 @@ categories: ["日志"]
 
 从这里开始是正文内容……
 
-
-这是我的第一篇博客。
+基于GPT5.2 的帮助(我超级会ctrl cv)
 
 这个博客使用 Hugo + GitHub Pages 搭建。

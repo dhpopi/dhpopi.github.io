@@ -45,6 +45,10 @@ enableRobotsTXT = true
     name = "steam"
     url = "https://steamcommunity.com/profiles/76561198963105829/"
 
+  [[params.socialIcons]]
+    name = "outlook"
+    url = "francis.guo@mail.utoronto.ca"
+
   # 顶部菜单（极简导航）
   [[menu.main]]
     name = "文章"
