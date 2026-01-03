@@ -3,7 +3,8 @@ languageCode = "zh-cn"
 title = "dhpopi"
 theme = "PaperMod"
 
-paginate = 10
+[pagination]
+  pagerSize = 10
 enableRobotsTXT = true
 
 [outputs]
